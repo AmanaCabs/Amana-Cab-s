@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book a Trip – Amana Cab's | Hyderabad</title>
+<link rel="stylesheet" href="css/shared.css">
+<style>
+.booking-section{padding:4rem 2rem 6rem;background:var(--ivory2);min-height:80vh}
+.booking-shell{max-width:900px;margin:0 auto}
+
+/* STEP BAR */
+.steps-bar{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:3rem;background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:1.5rem 2rem;flex-wrap:wrap}
+.step-item{display:flex;align-items:center;gap:.6rem;flex:1;min-width:fit-content}
+.step-item:not(:last-child)::after{content:'→';color:var(--border2);font-size:1rem;margin-left:.5rem;flex-shrink:0}
+.step-num{width:34px;height:34px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--muted);transition:all .3s;flex-shrink:0}
+.step-label{font-size:.77rem;font-weight:500;color:var(--muted);transition:color .3s;white-space:nowrap}
+.step-item.active .step-num{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(14,165,233,.35)}
+.step-item.active .step-label{color:var(--sky-md);font-weight:600}
+.step-item.done .step-num{background:var(--sky-md);border-color:var(--sky-md);color:#fff}
+.step-item.done .step-label{color:var(--sky-dk)}
+
+/* LAYOUT */
+.booking-layout{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start}
+.step-panel{display:none;animation:slideIn .35s ease}
+.step-panel.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+.panel-box{background:#fff;border-radius:24px;border:1.5px solid var(--border);padding:2.5rem;margin-bottom:1.5rem}
+.panel-title{font-family:var(--ff-d);font-size:1.65rem;font-weight:600;color:var(--slate);margin-bottom:.3rem}
+.panel-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem}
+
+/* VEHICLE GRID */
+.vehicle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.vehicle-card{border:2px solid var(--border);border-radius:16px;padding:1.4rem 1rem;text-align:center;cursor:pointer;transition:all .3s;background:#fff;position:relative}
+.vehicle-card:hover{border-color:var(--sky-lt);transform:translateY(-3px);box-shadow:0 10px 30px rgba(14,165,233,.1)}
+.vehicle-card.selected{border-color:var(--sky-md);background:linear-gradient(135deg,#f0f9ff,#e0f2fe)}
+.vehicle-card.selected::after{content:'✓';position:absolute;top:.65rem;right:.75rem;color:var(--sky-md);font-weight:700;font-size:.9rem}
+.vc-img{height:90px;overflow:hidden;border-radius:10px;margin-bottom:.75rem;position:relative;background:var(--ivory2)}
+.vc-img img{width:100%;height:100%;object-fit:cover}
+.v-name{font-family:var(--ff-d);font-size:1.05rem;font-weight:600;color:var(--slate);margin-bottom:.12rem}
+.v-seats{font-size:.7rem;color:var(--muted)}
+.v-type{font-size:.63rem;color:var(--sky-md);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+
+/* TRIP TOGGLE */
+.trip-toggle{display:flex;background:var(--ivory2);border:1.5px solid var(--border);border-radius:50px;padding:.3rem;width:fit-content;margin-bottom:2rem}
+.trip-toggle button{background:none;border:none;color:var(--muted);padding:.55rem 1.8rem;border-radius:50px;font-family:var(--ff-b);font-size:.82rem;cursor:pointer;transition:all .3s;font-weight:500}
+.trip-toggle button.active{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(14,165,233,.3)}
+
+/* PACKAGE SELECT */
+.pkg-select-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.ps-card{border:2px solid var(--border);border-radius:16px;padding:1.25rem;cursor:pointer;transition:all .3s;background:#fff;position:relative}
+.ps-card:hover{border-color:var(--sky-lt);transform:translateY(-3px);box-shadow:0 10px 28px rgba(14,165,233,.09)}
+.ps-card.selected{border-color:var(--sky-md);background:linear-gradient(135deg,#f0f9ff,#e0f2fe)}
+.ps-card.selected::after{content:'✓';position:absolute;top:.6rem;right:.75rem;color:var(--sky-md);font-weight:700}
+.ps-icon{font-size:1.6rem;margin-bottom:.5rem}
+.ps-name{font-size:.9rem;font-weight:600;color:var(--slate);margin-bottom:.15rem}
+.ps-detail{font-size:.72rem;color:var(--muted);margin-bottom:.5rem;line-height:1.4}
+.ps-price{font-family:var(--ff-d);font-size:1.25rem;color:var(--sky-md);font-weight:600}
+
+/* FORM NAV */
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
+.btn-back{background:var(--ivory2);border:1.5px solid var(--border);color:var(--muted);padding:.8rem 1.8rem;border-radius:50px;font-family:var(--ff-b);font-size:.82rem;cursor:pointer;transition:all .3s;font-weight:500}
+.btn-back:hover{border-color:var(--muted);color:var(--slate)}
+.btn-next{background:var(--grad);color:#fff;border:none;padding:.85rem 2.2rem;border-radius:50px;font-family:var(--ff-b);font-size:.84rem;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 6px 24px rgba(14,165,233,.3);letter-spacing:.03em}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(14,165,233,.45)}
+.btn-next:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* SUMMARY SIDEBAR */
+.summary-box{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:1.75rem;position:sticky;top:100px}
+.summary-title{font-family:var(--ff-d);font-size:1.2rem;font-weight:600;color:var(--slate);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.summary-item{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;padding:.5rem 0;border-bottom:1px dashed var(--border);font-size:.79rem}
+.summary-item:last-child{border-bottom:none}
+.si-label{color:var(--muted);flex-shrink:0}
+.si-val{color:var(--slate);font-weight:600;text-align:right;word-break:break-word}
+.summary-note{background:var(--ivory2);border:1.5px solid var(--border);border-radius:12px;padding:.9rem;text-align:center;margin-top:1.25rem;font-size:.74rem;color:var(--muted);line-height:1.6}
+.summary-note strong{color:var(--sky-md)}
+
+.detail-sep{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sky-md);font-weight:600;margin:1.5rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+
+/* CONFIRM STEP */
+.confirm-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.5rem}
+.confirm-item{background:var(--ivory2);border-radius:12px;padding:1rem 1.1rem}
+.confirm-label{font-size:.67rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
+.confirm-val{font-size:.87rem;font-weight:600;color:var(--slate)}
+.terms-check{display:flex;align-items:flex-start;gap:.75rem;font-size:.79rem;color:var(--muted);margin-bottom:1.5rem}
+.terms-check input{margin-top:.15rem;flex-shrink:0;accent-color:var(--sky-md)}
+
+@media(max-width:860px){.booking-layout{grid-template-columns:1fr}.summary-box{position:static}}
+@media(max-width:600px){.vehicle-grid,.pkg-select-grid{grid-template-columns:1fr 1fr}.confirm-grid{grid-template-columns:1fr}}
+@media(max-width:400px){.vehicle-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page-hero">
+  <span class="page-hero-label">Reserve Your Ride</span>
+  <h1>Book a Trip</h1>
+  <p>A few quick steps — pick your vehicle, package, add your details, and you're all set.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>Book a Trip</span></div>
+</div>
+
+<section class="booking-section">
+  <div class="booking-shell">
+    <!-- STEP BAR -->
+    <div class="steps-bar">
+      <div class="step-item active" id="si-1"><div class="step-num">1</div><div class="step-label">Vehicle</div></div>
+      <div class="step-item" id="si-2"><div class="step-num">2</div><div class="step-label">Package</div></div>
+      <div class="step-item" id="si-3"><div class="step-num">3</div><div class="step-label">Location</div></div>
+      <div class="step-item" id="si-4"><div class="step-num">4</div><div class="step-label">Details</div></div>
+      <div class="step-item" id="si-5"><div class="step-num">5</div><div class="step-label">Confirm</div></div>
+    </div>
+
+    <div class="booking-layout">
+      <!-- MAIN PANELS -->
+      <div>
+        <!-- STEP 1: VEHICLE -->
+        <div class="step-panel active" id="panel-1">
+          <div class="panel-box">
+            <div class="panel-title">Select Your Vehicle</div>
+            <p class="panel-sub">Choose the cab that best fits your group and comfort level.</p>
+            <div class="vehicle-grid">
+              <div class="vehicle-card" onclick="selectVehicle(this,'Toyota Innova','6+1 Seater','SUV')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=300&q=75&auto=format&fit=crop" alt="Innova" loading="lazy"></div>
+                <div class="v-name">Toyota Innova</div><div class="v-seats">6+1 Seater</div><div class="v-type">SUV</div>
+              </div>
+              <div class="vehicle-card" onclick="selectVehicle(this,'Innova Crysta','6+1 Premium','Premium')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=300&q=75&auto=format&fit=crop" alt="Crysta" loading="lazy"></div>
+                <div class="v-name">Innova Crysta</div><div class="v-seats">6+1 Premium</div><div class="v-type">Premium SUV</div>
+              </div>
+              <div class="vehicle-card" onclick="selectVehicle(this,'Maruti Ciaz','4+1 Seater','Sedan')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=300&q=75&auto=format&fit=crop" alt="Ciaz" loading="lazy"></div>
+                <div class="v-name">Maruti Ciaz</div><div class="v-seats">4+1 Seater</div><div class="v-type">Sedan</div>
+              </div>
+              <div class="vehicle-card" onclick="selectVehicle(this,'Dzire / Etios','4+1 Seater','Economy')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=300&q=75&auto=format&fit=crop" alt="Dzire" loading="lazy"></div>
+                <div class="v-name">Dzire / Etios</div><div class="v-seats">4+1 Seater</div><div class="v-type">Economy</div>
+              </div>
+              <div class="vehicle-card" onclick="selectVehicle(this,'Kia Carens','6+1 Premium','Premium')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=300&q=75&auto=format&fit=crop" alt="Carens" loading="lazy"></div>
+                <div class="v-name">Kia Carens</div><div class="v-seats">6+1 Premium</div><div class="v-type">Premium SUV</div>
+              </div>
+              <div class="vehicle-card" onclick="selectVehicle(this,'Tempo Traveller','12 Seater','Group')">
+                <div class="vc-img"><img src="https://images.unsplash.com/photo-1569087869659-0b73d96d8c5b?w=300&q=75&auto=format&fit=crop" alt="Tempo" loading="lazy"></div>
+                <div class="v-name">Tempo Traveller</div><div class="v-seats">12 Seater</div><div class="v-type">Group Van</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-nav"><div></div><button class="btn-next" onclick="goNext(1)">Next: Choose Package →</button></div>
+        </div>
+
+        <!-- STEP 2: PACKAGE + TRIP -->
+        <div class="step-panel" id="panel-2">
+          <div class="panel-box">
+            <div class="panel-title">Trip Type & Package</div>
+            <p class="panel-sub">Select one-way or round trip, then pick your package.</p>
+            <div class="trip-toggle">
+              <button class="active" id="btn-oneway" onclick="setTrip('oneway')">🔁 One Way</button>
+              <button id="btn-roundtrip" onclick="setTrip('roundtrip')">🔄 Round Trip</button>
+            </div>
+            <div class="pkg-select-grid">
+              <div class="ps-card" onclick="selectPkg(this,'4 Hr / 40 Km','₹899+')"><div class="ps-icon">🏙️</div><div class="ps-name">4 Hr / 40 Km</div><div class="ps-detail">City local, quick errands</div><div class="ps-price">₹899+</div></div>
+              <div class="ps-card" onclick="selectPkg(this,'8 Hr / 80 Km','₹1,499+')"><div class="ps-icon">🗺️</div><div class="ps-name">8 Hr / 80 Km</div><div class="ps-detail">Full-day city package</div><div class="ps-price">₹1,499+</div></div>
+              <div class="ps-card" onclick="selectPkg(this,'Airport Transfer','₹799+')"><div class="ps-icon">✈️</div><div class="ps-name">Airport Transfer</div><div class="ps-detail">Pickup or drop service</div><div class="ps-price">₹799+</div></div>
+              <div class="ps-card" onclick="selectPkg(this,'Outstation','₹12/km+')"><div class="ps-icon">🛣️</div><div class="ps-name">Outstation</div><div class="ps-detail">Inter-city highway travel</div><div class="ps-price">₹12/km+</div></div>
+              <div class="ps-card" onclick="selectPkg(this,'Tour Package','Custom')"><div class="ps-icon">🏖️</div><div class="ps-name">Tour Package</div><div class="ps-detail">Multi-day sightseeing</div><div class="ps-price">Custom</div></div>
+              <div class="ps-card" onclick="selectPkg(this,'Corporate','Custom')"><div class="ps-icon">🏢</div><div class="ps-name">Corporate</div><div class="ps-detail">Business travel accounts</div><div class="ps-price">Custom</div></div>
+            </div>
+          </div>
+          <div class="form-nav"><button class="btn-back" onclick="goBack(2)">← Back</button><button class="btn-next" onclick="goNext(2)">Next: Location →</button></div>
+        </div>
+
+        <!-- STEP 3: LOCATION -->
+        <div class="step-panel" id="panel-3">
+          <div class="panel-box">
+            <div class="panel-title">Your Location</div>
+            <p class="panel-sub">Tell us where to pick you up and where you're going.</p>
+            <div class="form-row">
+              <div class="form-group"><label>State *</label>
+                <select id="loc-state"><option value="">Select State</option><option>Telangana</option><option>Andhra Pradesh</option><option>Karnataka</option><option>Tamil Nadu</option><option>Maharashtra</option><option>Goa</option><option>Kerala</option><option>Rajasthan</option><option>Gujarat</option><option>Delhi</option><option>Other</option></select>
+              </div>
+              <div class="form-group"><label>City *</label><input type="text" id="loc-city" placeholder="e.g. Hyderabad"></div>
+            </div>
+            <div class="form-group"><label>Pickup Address *</label><input type="text" id="loc-pickup" placeholder="Full address, landmark or area"></div>
+            <div class="form-group"><label>Drop Address</label><input type="text" id="loc-drop" placeholder="Destination address or landmark"></div>
+            <div id="return-field" style="display:none">
+              <div class="form-group"><label>Return Pickup Address <span style="color:var(--sky-md)">(Round Trip)</span></label><input type="text" id="loc-return" placeholder="Return journey start point"></div>
+            </div>
+          </div>
+          <div class="form-nav"><button class="btn-back" onclick="goBack(3)">← Back</button><button class="btn-next" onclick="goNext(3)">Next: Your Details →</button></div>
+        </div>
+
+        <!-- STEP 4: PERSONAL DETAILS -->
+        <div class="step-panel" id="panel-4">
+          <div class="panel-box">
+            <div class="panel-title">Your Details</div>
+            <p class="panel-sub">Almost there! We need a few details to confirm your booking.</p>
+            <div class="detail-sep">Traveller Information</div>
+            <div class="form-row">
+              <div class="form-group"><label>Full Name *</label><input type="text" id="det-name" placeholder="Your full name"></div>
+              <div class="form-group"><label>Phone Number *</label><input type="tel" id="det-phone" placeholder="+91 XXXXX XXXXX"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Email Address</label><input type="email" id="det-email" placeholder="Optional, for confirmation"></div>
+              <div class="form-group"><label>Age *</label><input type="number" id="det-age" placeholder="e.g. 32" min="18" max="99"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label>Passengers *</label><input type="number" id="det-persons" placeholder="e.g. 4" min="1" max="12"></div>
+              <div class="form-group"><label>Luggage Bags</label><input type="number" id="det-bags" placeholder="e.g. 2" min="0" max="20"></div>
+            </div>
+            <div class="detail-sep">Travel Schedule</div>
+            <div class="form-row">
+              <div class="form-group"><label>Travel Date *</label><input type="date" id="det-date"></div>
+              <div class="form-group"><label>Pickup Time *</label><input type="time" id="det-time"></div>
+            </div>
+            <div class="form-group"><label>Special Requests</label><input type="text" id="det-notes" placeholder="e.g. Baby seat, extra stops, specific route…"></div>
+          </div>
+          <div class="form-nav"><button class="btn-back" onclick="goBack(4)">← Back</button><button class="btn-next" onclick="goNext(4)">Review & Confirm →</button></div>
+        </div>
+
+        <!-- STEP 5: CONFIRM -->
+        <div class="step-panel" id="panel-5">
+          <div class="panel-box">
+            <div class="panel-title">Review Your Booking</div>
+            <p class="panel-sub">Please check all details before confirming your trip.</p>
+            <div class="confirm-grid" id="confirm-grid"></div>
+            <div class="terms-check">
+              <input type="checkbox" id="terms-cb">
+              <label for="terms-cb">I confirm the above details are correct and agree to Amana Cab's terms of service and cancellation policy.</label>
+            </div>
+            <button class="btn-next" id="confirm-btn" style="width:100%;justify-content:center" onclick="submitBooking()">✅ Confirm Booking & Send WhatsApp →</button>
+          </div>
+          <div class="form-nav"><button class="btn-back" onclick="goBack(5)">← Edit Details</button><div></div></div>
+        </div>
+      </div>
+
+      <!-- SUMMARY SIDEBAR -->
+      <div class="summary-box">
+        <div class="summary-title">Booking Summary</div>
+        <div class="summary-item"><span class="si-label">Vehicle</span><span class="si-val" id="s-vehicle">Not selected</span></div>
+        <div class="summary-item"><span class="si-label">Package</span><span class="si-val" id="s-package">Not selected</span></div>
+        <div class="summary-item"><span class="si-label">Trip Type</span><span class="si-val" id="s-trip">One Way</span></div>
+        <div class="summary-item"><span class="si-label">From</span><span class="si-val" id="s-pickup">—</span></div>
+        <div class="summary-item"><span class="si-label">To</span><span class="si-val" id="s-drop">—</span></div>
+        <div class="summary-item"><span class="si-label">Date</span><span class="si-val" id="s-date">—</span></div>
+        <div class="summary-item"><span class="si-label">Time</span><span class="si-val" id="s-time">—</span></div>
+        <div class="summary-item"><span class="si-label">Passengers</span><span class="si-val" id="s-persons">—</span></div>
+        <div class="summary-item"><span class="si-label">Name</span><span class="si-val" id="s-name">—</span></div>
+        <div class="summary-note">Pricing confirmed after vehicle allocation. <strong>No advance payment</strong> required.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS POPUP -->
+<div class="popup-overlay" id="success-popup">
+  <div class="popup-box">
+    <div class="popup-icon">🎉</div>
+    <div class="popup-title">Booking Confirmed!</div>
+    <p class="popup-sub">Thank you for choosing <strong>Amana Cab's</strong>!<br><br>Booking ID: <strong id="popup-booking-id" style="color:var(--sky-md)"></strong><br><br>A WhatsApp confirmation has been sent. Our team will call you shortly to confirm your ride.</p>
+    <button class="popup-close-btn" onclick="closeAndReset()">Great, Thank You!</button>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+const B={vehicle:'',vehicleSeats:'',package:'',packagePrice:'',tripType:'oneway'};
+let step=1;
+
+// Pre-fill from URL params
+const P=new URLSearchParams(location.search);
+if(P.get('vehicle')){
+  B.vehicle=P.get('vehicle');
+  document.querySelectorAll('.vehicle-card').forEach(c=>{
+    if(c.querySelector('.v-name')?.textContent.trim()===B.vehicle) c.classList.add('selected');
+  });
+}
+if(P.get('pkg')){
+  const m={'4hr40km':'4 Hr / 40 Km','8hr80km':'8 Hr / 80 Km','airport':'Airport Transfer','outstation':'Outstation','tour':'Tour Package','corporate':'Corporate'};
+  B.package=m[P.get('pkg')]||'';
+}
+updateSummary();
+
+// Min date = today
+document.getElementById('det-date').min=new Date().toISOString().split('T')[0];
+
+function selectVehicle(el,name,seats,type){
+  document.querySelectorAll('.vehicle-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  B.vehicle=name;B.vehicleSeats=seats;
+  updateSummary();
+}
+function selectPkg(el,name,price){
+  document.querySelectorAll('.ps-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  B.package=name;B.packagePrice=price;
+  updateSummary();
+}
+function setTrip(t){
+  B.tripType=t;
+  document.getElementById('btn-oneway').classList.toggle('active',t==='oneway');
+  document.getElementById('btn-roundtrip').classList.toggle('active',t==='roundtrip');
+  document.getElementById('return-field').style.display=t==='roundtrip'?'block':'none';
+  document.getElementById('s-trip').textContent=t==='roundtrip'?'Round Trip':'One Way';
+}
+function goNext(from){
+  if(from===1&&!B.vehicle){showToast('Please select a vehicle','err');return;}
+  if(from===2&&!B.package){showToast('Please select a package','err');return;}
+  if(from===3){
+    const s=document.getElementById('loc-state').value,c=document.getElementById('loc-city').value,p=document.getElementById('loc-pickup').value;
+    if(!s||!c||!p){showToast('Please fill State, City & Pickup Address','err');return;}
+    document.getElementById('s-pickup').textContent=p+', '+c;
+    document.getElementById('s-drop').textContent=document.getElementById('loc-drop').value||'—';
+  }
+  if(from===4){
+    const n=document.getElementById('det-name').value,ph=document.getElementById('det-phone').value,pr=document.getElementById('det-persons').value,d=document.getElementById('det-date').value,t=document.getElementById('det-time').value;
+    if(!n||!ph||!pr||!d||!t){showToast('Please fill all required (*) fields','err');return;}
+    document.getElementById('s-date').textContent=d;
+    document.getElementById('s-time').textContent=t;
+    document.getElementById('s-persons').textContent=pr;
+    document.getElementById('s-name').textContent=n;
+    buildConfirmGrid();
+  }
+  setStep(from+1);
+}
+function goBack(from){setStep(from-1);}
+function setStep(n){
+  step=n;
+  document.querySelectorAll('.step-panel').forEach((p,i)=>p.classList.toggle('active',i===n-1));
+  for(let i=1;i<=5;i++){
+    const el=document.getElementById('si-'+i);
+    el.classList.remove('active','done');
+    if(i===n) el.classList.add('active');
+    else if(i<n) el.classList.add('done');
+  }
+  window.scrollTo({top:180,behavior:'smooth'});
+}
+function updateSummary(){
+  document.getElementById('s-vehicle').textContent=B.vehicle||'Not selected';
+  document.getElementById('s-package').textContent=B.package+(B.packagePrice?' ('+B.packagePrice+')':'');
+}
+function buildConfirmGrid(){
+  const f=[
+    {l:'Full Name',v:document.getElementById('det-name').value},
+    {l:'Phone',v:document.getElementById('det-phone').value},
+    {l:'Vehicle',v:B.vehicle},{l:'Package',v:B.package},
+    {l:'Trip',v:B.tripType==='roundtrip'?'Round Trip':'One Way'},
+    {l:'State',v:document.getElementById('loc-state').value},
+    {l:'City',v:document.getElementById('loc-city').value},
+    {l:'Pickup',v:document.getElementById('loc-pickup').value},
+    {l:'Drop',v:document.getElementById('loc-drop').value||'—'},
+    {l:'Date',v:document.getElementById('det-date').value},
+    {l:'Time',v:document.getElementById('det-time').value},
+    {l:'Passengers',v:document.getElementById('det-persons').value},
+    {l:'Age',v:document.getElementById('det-age').value||'—'},
+    {l:'Luggage',v:document.getElementById('det-bags').value||'—'},
+    {l:'Notes',v:document.getElementById('det-notes').value||'None'},
+    {l:'Email',v:document.getElementById('det-email').value||'—'},
+  ];
+  document.getElementById('confirm-grid').innerHTML=f.map(x=>`<div class="confirm-item"><div class="confirm-label">${x.l}</div><div class="confirm-val">${x.v}</div></div>`).join('');
+}
+async function submitBooking(){
+  if(!document.getElementById('terms-cb').checked){showToast('Please agree to the terms','err');return;}
+  const btn=document.getElementById('confirm-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  const name=document.getElementById('det-name').value;
+  const phone=document.getElementById('det-phone').value;
+  const bookingId='AC'+Date.now().toString().slice(-6);
+  // Try backend API first, fallback to client-side
+  try{
+    const res=await fetch('/api/bookings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name,phone,email:document.getElementById('det-email').value,vehicle:B.vehicle,package:B.package,tripType:B.tripType,
+      state:document.getElementById('loc-state').value,city:document.getElementById('loc-city').value,
+      pickup:document.getElementById('loc-pickup').value,drop:document.getElementById('loc-drop').value,
+      returnAddress:document.getElementById('loc-return').value||'',
+      date:document.getElementById('det-date').value,time:document.getElementById('det-time').value,
+      persons:document.getElementById('det-persons').value,age:document.getElementById('det-age').value,
+      bags:document.getElementById('det-bags').value,notes:document.getElementById('det-notes').value,
+    })});
+    const data=await res.json();
+    if(data.success){
+      document.getElementById('popup-booking-id').textContent=data.booking.id;
+      if(data.whatsapp?.customerUrl) window.open(data.whatsapp.customerUrl,'_blank');
+      document.getElementById('success-popup').classList.add('show');
+      btn.disabled=false;btn.textContent='✅ Confirm Booking & Send WhatsApp →';
+      return;
+    }
+  }catch(e){}
+  // Fallback: WhatsApp link directly
+  const city=document.getElementById('loc-city').value,pickup=document.getElementById('loc-pickup').value,drop=document.getElementById('loc-drop').value;
+  const date=document.getElementById('det-date').value,time=document.getElementById('det-time').value,persons=document.getElementById('det-persons').value;
+  const msg=`🚗 *New Booking – Amana Cab's* 🎉\n\nHi ${name}! Thank you for booking with *Amana Cab's*.\n\n📋 *Booking Summary*\n• ID: ${bookingId}\n• Vehicle: ${B.vehicle}\n• Package: ${B.package}\n• Trip: ${B.tripType==='roundtrip'?'Round Trip':'One Way'}\n• Pickup: ${pickup}, ${city}\n• Drop: ${drop||'As discussed'}\n• Date & Time: ${date} at ${time}\n• Passengers: ${persons}\n\nOur team will call you shortly to confirm. Safe travels! 🌟\n\n_Amana Cab's · +91 98765 43210_`;
+  window.open(`https://wa.me/${phone.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('popup-booking-id').textContent=bookingId;
+  document.getElementById('success-popup').classList.add('show');
+  btn.disabled=false;btn.textContent='✅ Confirm Booking & Send WhatsApp →';
+}
+function closeAndReset(){
+  document.getElementById('success-popup').classList.remove('show');
+  B.vehicle='';B.package='';B.tripType='oneway';
+  setStep(1);
+  document.querySelectorAll('.vehicle-card,.ps-card').forEach(c=>c.classList.remove('selected'));
+  ['loc-state','loc-city','loc-pickup','loc-drop','loc-return','det-name','det-phone','det-email','det-age','det-persons','det-bags','det-date','det-time','det-notes'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  ['s-vehicle','s-package'].forEach(id=>document.getElementById(id).textContent='Not selected');
+  ['s-pickup','s-drop','s-date','s-time','s-persons','s-name'].forEach(id=>document.getElementById(id).textContent='—');
+  document.getElementById('s-trip').textContent='One Way';
+  document.getElementById('terms-cb').checked=false;
+}
+</script>
+</body>
+</html>

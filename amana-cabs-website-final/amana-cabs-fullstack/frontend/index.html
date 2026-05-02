@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Amana Cab's | Premium Cab Service in Hyderabad</title>
+<meta name="description" content="Amana Cab's — Hyderabad's most trusted premium cab service. Airport transfers, city rides, outstation tours. Available 24/7.">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+body{padding-top:0}
+
+/* ── HERO NAV OVERRIDE ──
+   The shared nav uses dark text by default.
+   On homepage the hero is dark navy, so we flip
+   all nav text to white until the user scrolls. */
+.nav:not(.scrolled) .nav-logo-text{color:#fff !important}
+.nav:not(.scrolled) .nav-logo-text small{color:rgba(255,255,255,.4) !important}
+.nav:not(.scrolled) .nav-links a{color:rgba(255,255,255,.85) !important}
+.nav:not(.scrolled) .nav-links a:hover,
+.nav:not(.scrolled) .nav-links a.active{background:rgba(255,255,255,.12) !important;color:#fff !important}
+.nav:not(.scrolled) .nav-phone{color:rgba(255,255,255,.6) !important}
+.nav:not(.scrolled) .nav-phone b{color:var(--sky-lt) !important}
+.nav:not(.scrolled) .nav-burger span{background:#fff !important}
+/* Keep the logo icon always visible */
+.nav .nav-logo-icon{flex-shrink:0}
+/* ── HERO ── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;opacity:.25}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.95) 0%,rgba(14,52,95,.85) 50%,rgba(10,22,40,.75) 100%)}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.hero-orb.o1{width:700px;height:700px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(56,189,248,.1),transparent 70%);animation:orbPulse 8s ease-in-out infinite}
+.hero-orb.o2{width:400px;height:400px;bottom:-100px;left:-50px;background:radial-gradient(circle,rgba(14,165,233,.08),transparent 70%);animation:orbPulse 11s ease-in-out infinite 2s}
+.hero-grid-overlay{position:absolute;inset:0;background-image:linear-gradient(rgba(56,189,248,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.04) 1px,transparent 1px);background-size:65px 65px}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 2rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:.65rem;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.22);padding:.45rem 1.15rem;border-radius:50px;font-size:.7rem;color:var(--sky-lt);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem;width:fit-content}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--sky);animation:blink 2s ease-in-out infinite}
+.hero h1{font-family:var(--ff-d);font-size:clamp(3.2rem,5.5vw,5.2rem);line-height:1.04;color:#fff;font-weight:600;margin-bottom:1.5rem}
+.hero h1 em{color:var(--sky);font-style:italic;display:block}
+.hero-sub{color:rgba(255,255,255,.55);font-size:.95rem;line-height:1.9;margin-bottom:2.5rem;max-width:480px;font-weight:300}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.hero-trust{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.trust-avs{display:flex}
+.trust-avs span{width:36px;height:36px;border-radius:50%;background:var(--grad);border:2.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff;margin-left:-9px}
+.trust-avs span:first-child{margin-left:0}
+.trust-txt{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.4}
+.trust-txt strong{color:#fff;display:block;font-size:.87rem}
+/* Hero Visual */
+.hero-visual{position:relative;display:flex;flex-direction:column;gap:1rem}
+.hero-img-card{border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative;animation:float 6s ease-in-out infinite}
+.hero-img-card img{width:100%;height:260px;object-fit:cover}
+.hero-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7),transparent 50%)}
+.hero-img-label{position:absolute;bottom:1.25rem;left:1.25rem;color:#fff;font-size:.75rem;font-weight:600;letter-spacing:.05em}
+.hero-img-rating{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:.5rem .85rem;color:#fff;font-size:.75rem;font-weight:600}
+.hero-pills{display:flex;gap:.75rem}
+.hero-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);border-radius:14px;padding:.85rem 1.1rem;display:flex;align-items:center;gap:.6rem;flex:1}
+.hp-icon{font-size:1.4rem}
+.hp-label{font-size:.67rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;line-height:1}
+.hp-val{font-size:.83rem;color:#fff;font-weight:600;line-height:1.3}
+
+/* ── STATS RIBBON ── */
+.stats-ribbon{background:var(--ivory2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 2rem}
+.stats-ribbon-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.stat-num{font-family:var(--ff-d);font-size:2.8rem;font-weight:600;color:var(--sky-md);line-height:1}
+.stat-lbl{font-size:.74rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-top:.4rem}
+.stat-divider{width:1px;background:var(--border);position:absolute}
+
+/* ── WHY SECTION ── */
+.why-section{padding:7rem 2rem;background:#fff;position:relative;overflow:hidden}
+.why-section::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(56,189,248,.06),transparent 70%);pointer-events:none}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.why-card{padding:2.25rem 1.75rem;border-radius:20px;border:1.5px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
+.why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,165,233,.03),transparent);opacity:0;transition:opacity .4s}
+.why-card:hover{border-color:var(--sky-lt);transform:translateY(-6px);box-shadow:0 20px 50px rgba(14,165,233,.1)}
+.why-card:hover::before{opacity:1}
+.why-icon{width:58px;height:58px;border-radius:16px;background:var(--ivory2);display:flex;align-items:center;justify-content:center;font-size:1.65rem;margin-bottom:1.25rem;transition:all .4s}
+.why-card:hover .why-icon{background:var(--grad);box-shadow:0 8px 24px rgba(14,165,233,.3)}
+.why-card h3{font-family:var(--ff-d);font-size:1.2rem;font-weight:600;color:var(--slate);margin-bottom:.5rem}
+.why-card p{font-size:.8rem;color:var(--muted);line-height:1.8}
+
+/* ── IMAGE SPLIT SECTION ── */
+.split-section{padding:7rem 2rem;background:var(--ivory2)}
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
+.split-images{position:relative}
+.split-img-main{border-radius:22px;overflow:hidden;box-shadow:0 24px 64px rgba(14,165,233,.18)}
+.split-img-main img{width:100%;height:360px;object-fit:cover}
+.split-img-float{position:absolute;bottom:-2rem;right:-1.5rem;width:55%;border-radius:18px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.25);border:4px solid #fff}
+.split-img-float img{width:100%;height:180px;object-fit:cover}
+.split-badge{position:absolute;top:1.5rem;left:-1.5rem;background:var(--grad);color:#fff;border-radius:16px;padding:1rem 1.25rem;text-align:center;box-shadow:0 12px 32px rgba(14,165,233,.4)}
+.split-badge .sb-num{font-family:var(--ff-d);font-size:2rem;font-weight:700;line-height:1}
+.split-badge .sb-lbl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.split-text p{color:var(--muted);font-size:.9rem;line-height:1.9;margin-bottom:1.25rem}
+.split-checks{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:2rem 0}
+.split-check{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:500;color:var(--slate)}
+.split-check::before{content:'✓';color:var(--sky-md);font-weight:700;flex-shrink:0}
+
+/* ── PACKAGES PREVIEW ── */
+.pkg-preview-section{padding:7rem 2rem;background:#fff}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;max-width:1200px;margin:0 auto}
+.pkg-card{background:#fff;border-radius:24px;overflow:hidden;border:1.5px solid var(--border);transition:all .4s;display:flex;flex-direction:column;position:relative}
+.pkg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad)}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(14,165,233,.13);border-color:var(--sky-lt)}
+.pkg-card-img{height:200px;overflow:hidden;position:relative}
+.pkg-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pkg-card:hover .pkg-card-img img{transform:scale(1.06)}
+.pkg-card-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.7),transparent 60%)}
+.pkg-badge{position:absolute;top:1rem;right:1rem;background:var(--grad);color:#fff;font-size:.62rem;padding:.28rem .7rem;border-radius:50px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.pkg-icon-overlay{position:absolute;bottom:1rem;left:1.25rem;font-size:2rem}
+.pkg-body{padding:1.75rem 1.75rem 2rem;flex:1;display:flex;flex-direction:column}
+.pkg-name{font-family:var(--ff-d);font-size:1.4rem;font-weight:600;color:var(--slate);margin-bottom:.3rem}
+.pkg-desc{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:1.25rem;flex:1}
+.pkg-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.pkg-price{font-family:var(--ff-d);font-size:1.7rem;color:var(--sky-md);font-weight:600}
+.pkg-price small{font-family:var(--ff-b);font-size:.7rem;color:var(--muted)}
+.pkg-link{display:block;text-align:center;background:var(--ivory2);border:1.5px solid var(--border);color:var(--sky-md);padding:.7rem;border-radius:50px;font-size:.78rem;font-weight:600;text-decoration:none;transition:all .3s;letter-spacing:.04em}
+.pkg-link:hover{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(14,165,233,.3)}
+.s-head.split-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+
+/* ── FLEET PREVIEW ── */
+.fleet-prev-section{padding:7rem 2rem;background:var(--ivory2)}
+.fleet-prev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;max-width:1200px;margin:0 auto}
+.fleet-prev-card{border-radius:18px;overflow:hidden;border:1.5px solid var(--border);transition:all .4s;background:#fff;text-decoration:none;color:inherit;display:block}
+.fleet-prev-card:hover{border-color:var(--sky-lt);transform:translateY(-5px);box-shadow:0 16px 44px rgba(14,165,233,.1)}
+.fp-img{height:160px;overflow:hidden;position:relative}
+.fp-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fleet-prev-card:hover .fp-img img{transform:scale(1.08)}
+.fp-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.6),transparent 50%)}
+.fp-cat{position:absolute;top:.75rem;left:.75rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.6rem;padding:.22rem .6rem;border-radius:50px;backdrop-filter:blur(8px);text-transform:uppercase;letter-spacing:.07em;font-weight:500}
+.fp-seats{position:absolute;bottom:.75rem;left:.75rem;color:#fff;font-size:.72rem;font-weight:600}
+.fp-info{padding:1.1rem 1.25rem}
+.fp-name{font-family:var(--ff-d);font-size:1.05rem;font-weight:600;color:var(--slate);margin-bottom:.2rem}
+.fp-meta{font-size:.72rem;color:var(--muted);margin-bottom:.65rem}
+.fp-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.fp-tag{background:var(--ivory2);border:1px solid var(--border);padding:.18rem .52rem;border-radius:50px;font-size:.62rem;color:var(--sky-dk);font-weight:500}
+
+/* ── TESTIMONIALS ── */
+.test-section{padding:7rem 2rem;background:#fff}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.test-card{background:#fff;border-radius:22px;padding:2.25rem;border:1.5px solid var(--border);transition:all .4s;position:relative;overflow:hidden}
+.test-card:hover{border-color:var(--sky-lt);box-shadow:0 16px 44px rgba(14,165,233,.09)}
+.test-quote{position:absolute;top:1.25rem;right:1.5rem;font-family:var(--ff-d);font-size:4rem;color:var(--border);line-height:1;opacity:.5}
+.test-stars{color:var(--sky);font-size:.95rem;letter-spacing:.12em;margin-bottom:.85rem}
+.test-text{font-size:.85rem;color:var(--muted);line-height:1.85;margin-bottom:1.5rem;font-style:italic}
+.test-author{display:flex;align-items:center;gap:.85rem}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0}
+.test-name{font-weight:600;font-size:.85rem;color:var(--slate)}
+.test-loc{font-size:.72rem;color:var(--muted)}
+.test-tag{background:var(--ivory2);border:1px solid var(--border);padding:.2rem .6rem;border-radius:50px;font-size:.65rem;color:var(--sky-dk);font-weight:500;margin-top:.3rem;display:inline-block}
+
+/* ── CTA BANNER ── */
+.cta-banner{padding:7rem 2rem;background:var(--navy);position:relative;overflow:hidden;text-align:center}
+.cta-banner-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;opacity:.12}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(56,189,248,.22),transparent 65%)}
+.cta-banner h2{font-family:var(--ff-d);font-size:clamp(2.4rem,4.5vw,4rem);color:#fff;font-weight:600;margin-bottom:1.25rem;position:relative}
+.cta-banner p{color:rgba(255,255,255,.5);font-size:.93rem;max-width:500px;margin:0 auto 2.75rem;line-height:1.85;position:relative}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;position:relative}
+.cta-phone-strip{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3.5rem;position:relative}
+.cta-ph-item{text-align:center}
+.cta-ph-item .ph-icon{font-size:1.8rem;margin-bottom:.5rem}
+.cta-ph-item p{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem}
+.cta-ph-item a{font-size:1.1rem;color:var(--sky);font-weight:600;text-decoration:none;font-family:var(--ff-d)}
+
+@media(max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;padding-top:130px;text-align:center}
+  .hero-badge,.hero-btns,.hero-trust{justify-content:center}
+  .hero-sub{margin:0 auto 2.5rem}
+  .hero-visual{display:none}
+  .split-grid{grid-template-columns:1fr}
+  .split-images{display:none}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr 1fr}
+  .fleet-prev-grid{grid-template-columns:1fr 1fr}
+  .test-grid{grid-template-columns:1fr}
+  .stats-ribbon-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .pkg-grid,.fleet-prev-grid,.why-grid{grid-template-columns:1fr}
+  .stats-ribbon-inner{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="hero-dot"></div>Premium Cab Service · Hyderabad</div>
+      <h1>Your Journey,<em>Our Passion.</em></h1>
+      <p class="hero-sub">Hyderabad's most trusted premium cab service. Airport pickups, city rides, and outstation tours — delivered with class, comfort, and zero delays.</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn-p">Book a Trip Now</a>
+        <a href="packages.html" class="btn-ghost">View Packages</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avs">
+          <span>RK</span><span>SP</span><span>AM</span><span>VR</span><span>+</span>
+        </div>
+        <div class="trust-txt"><strong>5,000+ Happy Travellers</strong>Trusted across Hyderabad since 2018</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80&auto=format&fit=crop" alt="Luxury cab Hyderabad" loading="lazy">
+        <div class="hero-img-overlay"></div>
+        <div class="hero-img-label">🚗 Premium Fleet · GPS Tracked</div>
+        <div class="hero-img-rating">⭐ 4.9 / 5</div>
+      </div>
+      <div class="hero-pills">
+        <div class="hero-pill"><div class="hp-icon">✈️</div><div><div class="hp-label">Airport</div><div class="hp-val">24/7 Pickup</div></div></div>
+        <div class="hero-pill"><div class="hp-icon">🛡️</div><div><div class="hp-label">Safety</div><div class="hp-val">GPS Tracked</div></div></div>
+        <div class="hero-pill"><div class="hp-icon">💳</div><div><div class="hp-label">Payment</div><div class="hp-val">Pay After Ride</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS RIBBON -->
+<div class="stats-ribbon">
+  <div class="stats-ribbon-inner">
+    <div class="reveal"><div class="stat-num">5000+</div><div class="stat-lbl">Happy Rides</div></div>
+    <div class="reveal d1"><div class="stat-num">8+</div><div class="stat-lbl">Years of Service</div></div>
+    <div class="reveal d2"><div class="stat-num">4.9★</div><div class="stat-lbl">Avg Rating</div></div>
+    <div class="reveal d3"><div class="stat-num">24/7</div><div class="stat-lbl">Always Available</div></div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why-section">
+  <div class="container">
+    <div class="s-head center reveal">
+      <div class="eyebrow center">Why Choose Us</div>
+      <div class="s-title">Travel the Amana way</div>
+      <p class="s-sub">We don't just drive you from A to B — we make every journey an experience worth remembering.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">🛡️</div><h3>Verified Drivers</h3><p>Every driver is background-checked, trained, and courteous. Your safety is our top priority.</p></div>
+      <div class="why-card reveal d1"><div class="why-icon">✈️</div><h3>Airport Specialist</h3><p>Never miss a flight. We track your flight and ensure you're there on time — always.</p></div>
+      <div class="why-card reveal d2"><div class="why-icon">📍</div><h3>GPS Tracked</h3><p>Every cab is GPS-tracked in real-time. Share your ride with loved ones for peace of mind.</p></div>
+      <div class="why-card reveal d3"><div class="why-icon">💎</div><h3>Premium Comfort</h3><p>AC vehicles, clean interiors, and attentive drivers — every ride feels first class.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT SECTION (About teaser) -->
+<section class="split-section">
+  <div class="container">
+    <div class="split-grid">
+      <div class="split-images reveal from-left">
+        <div class="split-img-main">
+          <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=900&q=80&auto=format&fit=crop" alt="Premium cab service">
+        </div>
+        <div class="split-img-float">
+          <img src="https://images.unsplash.com/photo-1583312267-bc5a08e42ea2?w=600&q=80&auto=format&fit=crop" alt="Driver">
+        </div>
+        <div class="split-badge"><div class="sb-num">8+</div><div class="sb-lbl">Years Serving Hyderabad</div></div>
+      </div>
+      <div class="split-text reveal from-right">
+        <div class="eyebrow">Our Story</div>
+        <div class="s-title">Founded on trust, built on class</div>
+        <p>Since 2018, Amana Cab's has been the most trusted name in premium cab travel across Hyderabad. We started with three cars and a belief — that every passenger deserves more than just a ride.</p>
+        <p>Today, we operate a fleet of 15+ vehicles and serve thousands of passengers every month, from early morning airport runs to multi-day outstation tours across South India.</p>
+        <div class="split-checks">
+          <div class="split-check">Clean, AC Vehicles</div>
+          <div class="split-check">Verified Drivers</div>
+          <div class="split-check">No Hidden Charges</div>
+          <div class="split-check">24/7 Support</div>
+          <div class="split-check">GPS Tracked</div>
+          <div class="split-check">Pay After Ride</div>
+        </div>
+        <a href="about.html" class="btn-p">Read Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES PREVIEW -->
+<section class="pkg-preview-section">
+  <div class="container">
+    <div class="s-head split-head">
+      <div>
+        <div class="eyebrow">What We Offer</div>
+        <div class="s-title">Choose your package</div>
+      </div>
+      <a href="packages.html" class="btn-o">View All Packages</a>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <div class="pkg-card-img">
+          <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=700&q=80&auto=format&fit=crop" alt="City cab Hyderabad">
+          <div class="pkg-card-img-overlay"></div>
+          <div class="pkg-icon-overlay">🗺️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">8 Hr / 80 Km</div>
+          <p class="pkg-desc">Our most popular full-day city package. Perfect for multiple stops, errands, shopping, or business meetings across Hyderabad.</p>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹1,499<small>/trip</small></div>
+            <span style="background:var(--grad);color:#fff;font-size:.62rem;padding:.25rem .65rem;border-radius:50px;font-weight:600">Most Popular</span>
+          </div>
+          <a href="booking.html?pkg=8hr80km" class="pkg-link">Book This Package →</a>
+        </div>
+      </div>
+      <div class="pkg-card reveal d1">
+        <div class="pkg-card-img">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80&auto=format&fit=crop" alt="Airport transfer Hyderabad">
+          <div class="pkg-card-img-overlay"></div>
+          <div class="pkg-icon-overlay">✈️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Airport Transfer</div>
+          <p class="pkg-desc">Punctual pickup and drop for Rajiv Gandhi International Airport. We track your flight — no waiting, no stress.</p>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹799<small>/trip</small></div>
+          </div>
+          <a href="booking.html?pkg=airport" class="pkg-link">Book Airport Cab →</a>
+        </div>
+      </div>
+      <div class="pkg-card reveal d2">
+        <div class="pkg-card-img">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&q=80&auto=format&fit=crop" alt="Outstation trip">
+          <div class="pkg-card-img-overlay"></div>
+          <div class="pkg-icon-overlay">🛣️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Outstation Trips</div>
+          <p class="pkg-desc">Comfortable inter-city travel to Bangalore, Chennai, Tirupati, Goa, and all major destinations across South India.</p>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹12<small>/km onwards</small></div>
+          </div>
+          <a href="booking.html?pkg=outstation" class="pkg-link">Plan My Trip →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET PREVIEW -->
+<section class="fleet-prev-section">
+  <div class="container">
+    <div class="s-head split-head">
+      <div>
+        <div class="eyebrow">Our Vehicles</div>
+        <div class="s-title">Premium fleet, every ride</div>
+      </div>
+      <a href="fleet.html" class="btn-o">See Full Fleet</a>
+    </div>
+    <div class="fleet-prev-grid">
+      <a href="booking.html?vehicle=Toyota+Innova" class="fleet-prev-card reveal">
+        <div class="fp-img">
+          <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=500&q=80&auto=format&fit=crop" alt="Toyota Innova cab">
+          <div class="fp-img-overlay"></div>
+          <div class="fp-cat">SUV</div>
+          <div class="fp-seats">👥 6+1 Seater</div>
+        </div>
+        <div class="fp-info">
+          <div class="fp-name">Toyota Innova</div>
+          <div class="fp-meta">Most trusted family & group cab</div>
+          <div class="fp-tags"><span class="fp-tag">City</span><span class="fp-tag">Airport</span><span class="fp-tag">Outstation</span></div>
+        </div>
+      </a>
+      <a href="booking.html?vehicle=Innova+Crysta" class="fleet-prev-card reveal d1">
+        <div class="fp-img">
+          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&q=80&auto=format&fit=crop" alt="Innova Crysta premium">
+          <div class="fp-img-overlay"></div>
+          <div class="fp-cat">Premium</div>
+          <div class="fp-seats">👥 6+1 Seater</div>
+        </div>
+        <div class="fp-info">
+          <div class="fp-name">Innova Crysta</div>
+          <div class="fp-meta">Upgraded comfort & premium interiors</div>
+          <div class="fp-tags"><span class="fp-tag">Premium</span><span class="fp-tag">Corporate</span></div>
+        </div>
+      </a>
+      <a href="booking.html?vehicle=Maruti+Ciaz" class="fleet-prev-card reveal d2">
+        <div class="fp-img">
+          <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&q=80&auto=format&fit=crop" alt="Maruti Ciaz sedan">
+          <div class="fp-img-overlay"></div>
+          <div class="fp-cat">Sedan</div>
+          <div class="fp-seats">👥 4+1 Seater</div>
+        </div>
+        <div class="fp-info">
+          <div class="fp-name">Maruti Ciaz</div>
+          <div class="fp-meta">Spacious sedan for business travel</div>
+          <div class="fp-tags"><span class="fp-tag">Business</span><span class="fp-tag">City</span></div>
+        </div>
+      </a>
+      <a href="fleet.html" class="fleet-prev-card reveal d3">
+        <div class="fp-img">
+          <img src="https://images.unsplash.com/photo-1569087869659-0b73d96d8c5b?w=500&q=80&auto=format&fit=crop" alt="Tempo traveller group">
+          <div class="fp-img-overlay"></div>
+          <div class="fp-cat">Group</div>
+          <div class="fp-seats">👥 12 Seater</div>
+        </div>
+        <div class="fp-info">
+          <div class="fp-name">Tempo Traveller</div>
+          <div class="fp-meta">Perfect for large group journeys</div>
+          <div class="fp-tags"><span class="fp-tag">Group</span><span class="fp-tag">Tours</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test-section">
+  <div class="container">
+    <div class="s-head center reveal">
+      <div class="eyebrow center">What Our Customers Say</div>
+      <div class="s-title">Real experiences, real smiles</div>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Booked an airport cab at 3 AM and the driver was already waiting when I came out. Immaculate car, very polite. This is the only cab service I'll use in Hyderabad now.</p>
+        <div class="test-author">
+          <div class="test-avatar">RK</div>
+          <div><div class="test-name">Ravi Kumar</div><div class="test-loc">Software Engineer, HITEC City</div><div class="test-tag">Airport Transfer</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal d1">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Took an Innova Crysta for our family trip to Tirupati. The driver was knowledgeable, the car was spotless, and the pricing was exactly as quoted. Absolutely recommend!</p>
+        <div class="test-author">
+          <div class="test-avatar">SP</div>
+          <div><div class="test-name">Sunita Prasad</div><div class="test-loc">Teacher, Secunderabad</div><div class="test-tag">Outstation Trip</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal d2">
+        <div class="test-quote">"</div>
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Our company uses Amana Cab's for all corporate travel now. Always on time, professional drivers, and seamless booking via WhatsApp. Best in Hyderabad.</p>
+        <div class="test-author">
+          <div class="test-avatar">AM</div>
+          <div><div class="test-name">Anand Mehta</div><div class="test-loc">Startup Founder, Banjara Hills</div><div class="test-tag">Corporate Travel</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-banner-bg"></div>
+  <div class="container">
+    <h2 class="reveal">Ready to ride in comfort?</h2>
+    <p class="reveal d1">Book your cab in 60 seconds. No advance payment. Confirmation sent directly to your WhatsApp.</p>
+    <div class="cta-btns reveal d2">
+      <a href="booking.html" class="btn-w">Book a Trip Now</a>
+      <a href="https://wa.me/919876543210?text=Hi%2C+I+want+to+book+a+cab" target="_blank" class="btn-ghost">Chat on WhatsApp</a>
+    </div>
+    <div class="cta-phone-strip reveal d3">
+      <div class="cta-ph-item">
+        <div class="ph-icon">📞</div>
+        <p>Call Us Now</p>
+        <a href="tel:+919876543210">+91 98765 43210</a>
+      </div>
+      <div class="cta-ph-item">
+        <div class="ph-icon">💬</div>
+        <p>WhatsApp</p>
+        <a href="https://wa.me/919876543210" target="_blank">Chat Now →</a>
+      </div>
+      <div class="cta-ph-item">
+        <div class="ph-icon">✉️</div>
+        <p>Email Us</p>
+        <a href="mailto:hello@amanacabs.in">hello@amanacabs.in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

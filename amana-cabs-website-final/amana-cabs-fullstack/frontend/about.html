@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About Us – Amana Cab's | Hyderabad</title>
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* STORY */
+.story-section{padding:6rem 2rem;background:#fff}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto}
+.story-imgs{position:relative;min-height:480px}
+.story-img-main{border-radius:22px;overflow:hidden;box-shadow:0 24px 64px rgba(14,165,233,.18);position:absolute;top:0;left:0;right:20%;bottom:80px}
+.story-img-main img{width:100%;height:100%;object-fit:cover}
+.story-img-float{position:absolute;bottom:0;right:0;width:55%;border-radius:18px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.25);border:4px solid #fff}
+.story-img-float img{width:100%;height:180px;object-fit:cover}
+.story-stat-badge{position:absolute;top:1.5rem;left:-1.5rem;background:var(--grad);color:#fff;border-radius:16px;padding:1.1rem 1.4rem;text-align:center;box-shadow:0 12px 32px rgba(14,165,233,.4);z-index:3}
+.story-stat-badge .sbn{font-family:var(--ff-d);font-size:2.2rem;font-weight:700;line-height:1}
+.story-stat-badge .sbl{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.story-text p{color:var(--muted);font-size:.9rem;line-height:1.9;margin-bottom:1.25rem}
+.story-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0}
+.sms-item{text-align:center;background:var(--ivory2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem}
+.sms-item .n{font-family:var(--ff-d);font-size:1.8rem;font-weight:600;color:var(--sky-md);line-height:1}
+.sms-item .l{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+.story-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+
+/* MISSION */
+.mv-section{padding:5rem 2rem;background:var(--ivory2)}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;margin:0 auto}
+.mv-card{background:#fff;border-radius:24px;padding:2.75rem;border:1.5px solid var(--border);position:relative;overflow:hidden;transition:all .4s}
+.mv-card:hover{border-color:var(--sky-lt);box-shadow:0 20px 50px rgba(14,165,233,.1)}
+.mv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.mv-card.mission::before{background:var(--grad)}
+.mv-card.vision::before{background:linear-gradient(135deg,#38bdf8,#818cf8)}
+.mv-emoji{font-size:2.5rem;margin-bottom:1.1rem;display:block}
+.mv-card h3{font-family:var(--ff-d);font-size:1.5rem;font-weight:600;color:var(--slate);margin-bottom:.75rem}
+.mv-card p{font-size:.87rem;color:var(--muted);line-height:1.85}
+
+/* VALUES */
+.values-section{padding:5rem 2rem;background:#fff}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.value-card{padding:2.25rem 2rem;border-radius:20px;border:1.5px solid var(--border);transition:all .4s;text-align:center}
+.value-card:hover{border-color:var(--sky-lt);transform:translateY(-6px);box-shadow:0 20px 50px rgba(14,165,233,.09)}
+.value-icon{width:64px;height:64px;border-radius:20px;background:var(--ivory2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1.25rem;transition:all .4s}
+.value-card:hover .value-icon{background:var(--grad);box-shadow:0 8px 24px rgba(14,165,233,.3)}
+.value-card h3{font-family:var(--ff-d);font-size:1.15rem;font-weight:600;color:var(--slate);margin-bottom:.5rem}
+.value-card p{font-size:.8rem;color:var(--muted);line-height:1.75}
+
+/* TEAM */
+.team-section{padding:5rem 2rem;background:var(--ivory2)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.team-card{background:#fff;border-radius:22px;overflow:hidden;border:1.5px solid var(--border);transition:all .4s;text-align:center}
+.team-card:hover{border-color:var(--sky-lt);transform:translateY(-6px);box-shadow:0 20px 50px rgba(14,165,233,.1)}
+.team-img{height:200px;overflow:hidden;position:relative}
+.team-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.team-card:hover .team-img img{transform:scale(1.06)}
+.team-body{padding:1.5rem}
+.team-name{font-family:var(--ff-d);font-size:1.2rem;font-weight:600;color:var(--slate);margin-bottom:.2rem}
+.team-role{font-size:.72rem;color:var(--sky-md);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem}
+.team-desc{font-size:.77rem;color:var(--muted);line-height:1.6}
+
+/* TIMELINE */
+.timeline-section{padding:6rem 2rem;background:linear-gradient(135deg,#0a1628,#1e3a5f);position:relative;overflow:hidden}
+.timeline-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(56,189,248,.12),transparent 60%)}
+.tl-inner{max-width:800px;margin:0 auto;position:relative}
+.tl-inner::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(56,189,248,.15);transform:translateX(-50%)}
+.tl-item{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:3.5rem;position:relative}
+.tl-item:nth-child(even) .tl-content{order:-1;text-align:right}
+.tl-dot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:var(--sky);border:3px solid var(--navy2);box-shadow:0 0 18px rgba(56,189,248,.55);z-index:2}
+.tl-year{font-family:var(--ff-d);font-size:2.2rem;color:var(--sky);font-weight:600;opacity:.55}
+.tl-content h4{font-family:var(--ff-d);font-size:1.15rem;color:#fff;font-weight:600;margin-bottom:.4rem}
+.tl-content p{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.7}
+
+/* GALLERY STRIP */
+.about-gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:200px 200px;gap:.75rem;max-width:1200px;margin:0 auto;padding:0 2rem 5rem}
+.ag-item{border-radius:14px;overflow:hidden}
+.ag-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.ag-item:hover img{transform:scale(1.06)}
+.ag-item.big{grid-row:span 2}
+
+@media(max-width:1000px){
+  .story-grid{grid-template-columns:1fr}
+  .story-imgs{display:none}
+  .mv-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .values-grid{grid-template-columns:1fr 1fr}
+  .tl-inner::before{left:20px}
+  .tl-item{grid-template-columns:1fr;padding-left:3rem}
+  .tl-item:nth-child(even) .tl-content{order:0;text-align:left}
+  .tl-dot{left:20px}
+  .about-gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px}
+  .ag-item.big{grid-row:span 1}
+}
+@media(max-width:600px){.values-grid,.team-grid{grid-template-columns:1fr}.about-gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page-hero">
+  <span class="page-hero-label">Our Story</span>
+  <h1>About Amana Cab's</h1>
+  <p>More than a cab service — a promise of comfort, class, and care on every journey.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>About Us</span></div>
+</div>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-grid">
+    <div class="story-imgs reveal from-left">
+      <div class="story-img-main"><img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=900&q=80&auto=format&fit=crop" alt="Amana Cab's premium service"></div>
+      <div class="story-img-float"><img src="https://images.unsplash.com/photo-1583312267-bc5a08e42ea2?w=600&q=80&auto=format&fit=crop" alt="Professional driver"></div>
+      <div class="story-stat-badge"><div class="sbn">8+</div><div class="sbl">Years in Hyderabad</div></div>
+    </div>
+    <div class="story-text reveal from-right">
+      <div class="eyebrow">Who We Are</div>
+      <div class="s-title" style="margin-bottom:1.5rem">Founded on trust,<br>built on class</div>
+      <p>Amana Cab's was born in 2018 with a single, clear purpose — to give the people of Hyderabad a cab experience that feels truly premium, not just functional. We started with three cars and a belief that every passenger deserves a clean ride, a courteous driver, and a fair price.</p>
+      <p>Today, we operate a fleet of 15+ vehicles and serve thousands of passengers every month — from early morning airport runs to multi-day outstation tours across South India. Our drivers are not just chauffeurs; they're trusted companions on your journey.</p>
+      <div class="story-mini-stats">
+        <div class="sms-item"><div class="n">5000+</div><div class="l">Happy Rides</div></div>
+        <div class="sms-item"><div class="n">4.9★</div><div class="l">Avg Rating</div></div>
+        <div class="sms-item"><div class="n">24/7</div><div class="l">Available</div></div>
+      </div>
+      <div class="story-btns">
+        <a href="booking.html" class="btn-p">Book a Ride</a>
+        <a href="contact.html" class="btn-o">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="about-gallery">
+  <div class="ag-item big reveal"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80&auto=format&fit=crop" alt="Premium car"></div>
+  <div class="ag-item reveal d1"><img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=600&q=80&auto=format&fit=crop" alt="Interior"></div>
+  <div class="ag-item reveal d2"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80&auto=format&fit=crop" alt="Airport"></div>
+  <div class="ag-item reveal d1"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80&auto=format&fit=crop" alt="Road trip"></div>
+  <div class="ag-item reveal d2"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&q=80&auto=format&fit=crop" alt="Hyderabad"></div>
+</div>
+
+<!-- MISSION & VISION -->
+<section class="mv-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">What Drives Us</div>
+      <div class="s-title">Mission & Vision</div>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card mission reveal"><span class="mv-emoji">🎯</span><h3>Our Mission</h3><p>To make every journey a premium experience — safe, comfortable, punctual, and honestly priced. We aim to be the most trusted cab service in Hyderabad, building long-term relationships with every passenger we serve.</p></div>
+      <div class="mv-card vision reveal d2"><span class="mv-emoji">🌟</span><h3>Our Vision</h3><p>To redefine travel across South India by combining professional service, technology-driven reliability, and a genuine human touch — making Amana Cab's the first name people think of when they think of quality travel.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">Core Values</div>
+      <div class="s-title">What we stand for</div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal"><div class="value-icon">🛡️</div><h3>Safety First</h3><p>Every driver is verified, every car is inspected, every ride is GPS-tracked. Your safety is never compromised.</p></div>
+      <div class="value-card reveal d1"><div class="value-icon">💎</div><h3>Premium Quality</h3><p>Clean cabins, courteous drivers, on-time performance — quality in every single interaction.</p></div>
+      <div class="value-card reveal d2"><div class="value-icon">🤝</div><h3>Honesty</h3><p>No hidden fees, no inflated prices. We tell you exactly what you'll pay — nothing more.</p></div>
+      <div class="value-card reveal"><div class="value-icon">❤️</div><h3>Customer First</h3><p>Every decision we make is driven by what's best for our passengers. Always.</p></div>
+      <div class="value-card reveal d1"><div class="value-icon">⏰</div><h3>Punctuality</h3><p>We treat your time as precious. Your driver will always be there before you need them.</p></div>
+      <div class="value-card reveal d2"><div class="value-icon">🌱</div><h3>Reliability</h3><p>Available 24/7, rain or shine. You can count on Amana Cab's — every single time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">Our People</div>
+      <div class="s-title">Meet the team behind every ride</div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80&auto=format&fit=crop&face=true" alt="Founder"></div>
+        <div class="team-body"><div class="team-name">Mohammed Amaan</div><div class="team-role">Founder & CEO</div><p class="team-desc">10+ years in transport. Visionary behind Amana Cab's premium experience.</p></div>
+      </div>
+      <div class="team-card reveal d1">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80&auto=format&fit=crop&face=true" alt="Operations Head"></div>
+        <div class="team-body"><div class="team-name">Sana Begum</div><div class="team-role">Operations Head</div><p class="team-desc">Ensures every booking runs on time and every customer leaves happy.</p></div>
+      </div>
+      <div class="team-card reveal d2">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80&auto=format&fit=crop&face=true" alt="Fleet Manager"></div>
+        <div class="team-body"><div class="team-name">Ravi Shankar</div><div class="team-role">Fleet Manager</div><p class="team-desc">Keeps our entire fleet in perfect, safe, and road-ready condition.</p></div>
+      </div>
+      <div class="team-card reveal d3">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&face=true" alt="Customer Relations"></div>
+        <div class="team-body"><div class="team-name">Priya Reddy</div><div class="team-role">Customer Relations</div><p class="team-desc">Your first point of contact — always warm, responsive, and helpful.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:4rem">
+      <div class="eyebrow center" style="color:var(--sky)">Our Journey</div>
+      <div class="s-title" style="color:#fff">How we got here</div>
+    </div>
+    <div class="tl-inner">
+      <div class="tl-item reveal"><div class="tl-year">2018</div><div class="tl-dot"></div><div class="tl-content"><h4>Founded in Hyderabad</h4><p>Started with 3 cars and a big dream — to redefine cab travel in the city.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2019</div><div class="tl-dot"></div><div class="tl-content"><h4>Launched Airport Transfers</h4><p>Introduced 24/7 airport pickup & drop service. Became the go-to for frequent flyers.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2021</div><div class="tl-dot"></div><div class="tl-content"><h4>Outstation & Corporate</h4><p>Expanded to inter-city travel and launched corporate accounts for IT companies.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2023</div><div class="tl-dot"></div><div class="tl-content"><h4>Fleet Grew to 15+ Vehicles</h4><p>Added Innova Crysta, Kia Carens, and Tempo Travellers to the premium fleet.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-year">2026</div><div class="tl-dot"></div><div class="tl-content"><h4>5000+ Happy Rides</h4><p>Trusted by thousands across Hyderabad with a 4.9-star average rating and growing strong.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

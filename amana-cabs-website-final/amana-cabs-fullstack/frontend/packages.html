@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Packages – Amana Cab's | Hyderabad</title>
+<link rel="stylesheet" href="css/shared.css">
+<style>
+.packages-section{padding:5rem 2rem;background:#fff}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;max-width:1200px;margin:0 auto}
+.pkg-card{background:#fff;border-radius:24px;overflow:hidden;border:1.5px solid var(--border);transition:all .4s;display:flex;flex-direction:column;position:relative}
+.pkg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad)}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(14,165,233,.13);border-color:var(--sky-lt)}
+.pkg-img{height:210px;overflow:hidden;position:relative}
+.pkg-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pkg-card:hover .pkg-img img{transform:scale(1.07)}
+.pkg-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.75),transparent 55%)}
+.pop-badge{position:absolute;top:1rem;right:1rem;background:var(--grad);color:#fff;font-size:.62rem;padding:.28rem .75rem;border-radius:50px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;box-shadow:0 4px 14px rgba(14,165,233,.4)}
+.pkg-icon{position:absolute;bottom:1rem;left:1.25rem;font-size:2.2rem}
+.pkg-body{padding:1.75rem 1.75rem 2rem;flex:1;display:flex;flex-direction:column}
+.pkg-name{font-family:var(--ff-d);font-size:1.5rem;font-weight:600;color:var(--slate);margin-bottom:.3rem}
+.pkg-tagline{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.pkg-features{list-style:none;margin-bottom:1.5rem;flex:1}
+.pkg-features li{font-size:.8rem;color:var(--slate);padding:.38rem 0;border-bottom:1px dashed var(--border);display:flex;align-items:center;gap:.55rem}
+.pkg-features li:last-child{border-bottom:none}
+.pkg-features li::before{content:'✓';color:var(--sky-md);font-weight:700;flex-shrink:0}
+.pkg-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.pkg-price{font-family:var(--ff-d);font-size:1.85rem;color:var(--sky-md);font-weight:600}
+.pkg-price small{font-family:var(--ff-b);font-size:.7rem;color:var(--muted)}
+.pkg-vehicles{font-size:.7rem;color:var(--muted);background:var(--ivory2);padding:.35rem .7rem;border-radius:8px}
+.pkg-btn{display:block;text-align:center;background:var(--ivory2);border:1.5px solid var(--border);color:var(--sky-md);padding:.78rem;border-radius:50px;font-size:.79rem;font-weight:600;text-decoration:none;transition:all .3s;letter-spacing:.04em}
+.pkg-btn:hover{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(14,165,233,.3)}
+
+/* COMPARE */
+.compare-section{padding:5rem 2rem;background:var(--ivory2)}
+.compare-wrap{max-width:960px;margin:0 auto;overflow-x:auto}
+table.compare{width:100%;border-collapse:collapse;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(14,165,233,.07)}
+table.compare th{background:var(--grad-dark);color:#fff;padding:1.1rem 1.5rem;font-size:.74rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;text-align:left}
+table.compare td{padding:1rem 1.5rem;font-size:.82rem;color:var(--slate);border-bottom:1px solid var(--border)}
+table.compare tr:last-child td{border-bottom:none}
+table.compare tr:hover td{background:var(--ivory2)}
+table.compare td:first-child{font-weight:600}
+.check{color:var(--sky-md);font-size:1.1rem}
+.cross{color:var(--border2);font-size:1rem}
+
+/* FAQ */
+.faq-section{padding:5rem 2rem;background:#fff}
+.faq-wrap{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:1.5rem 0}
+.faq-q{font-weight:600;font-size:.92rem;color:var(--slate);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
+.faq-q .arr{color:var(--sky-md);transition:transform .3s;font-size:1.2rem;flex-shrink:0}
+.faq-a{font-size:.85rem;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:250px;padding-top:.8rem}
+.faq-item.open .arr{transform:rotate(45deg)}
+
+@media(max-width:900px){.pkg-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.pkg-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page-hero">
+  <span class="page-hero-label">Our Services</span>
+  <h1>Travel Packages</h1>
+  <p>From quick city hops to multi-day tours — we have a package for every journey and budget.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> / <span>Packages</span></div>
+</div>
+
+<section class="packages-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">What We Offer</div>
+      <div class="s-title">Choose your perfect package</div>
+      <p class="s-sub">All packages include professional driver, AC vehicle, GPS tracking, and zero hidden fees.</p>
+    </div>
+    <div class="pkg-grid">
+
+      <div class="pkg-card reveal">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=700&q=80&auto=format&fit=crop" alt="City package">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-icon">🏙️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">4 Hr / 40 Km</div>
+          <div class="pkg-tagline">Ideal for short city trips, quick errands, or half-day outings.</div>
+          <ul class="pkg-features">
+            <li>4 hours of cab usage</li>
+            <li>Up to 40 km included</li>
+            <li>₹15/km after 40 km</li>
+            <li>All vehicles available</li>
+            <li>AC & GPS included</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹899<small>+ extras</small></div>
+            <div class="pkg-vehicles">All vehicles</div>
+          </div>
+          <a href="booking.html?pkg=4hr40km" class="pkg-btn">Book This Package →</a>
+        </div>
+      </div>
+
+      <div class="pkg-card reveal d1">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=700&q=80&auto=format&fit=crop" alt="Full day package">
+          <div class="pkg-img-overlay"></div>
+          <div class="pop-badge">⭐ Most Popular</div>
+          <div class="pkg-icon">🗺️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">8 Hr / 80 Km</div>
+          <div class="pkg-tagline">Our best-seller. Full-day city coverage for multiple stops and errands.</div>
+          <ul class="pkg-features">
+            <li>8 hours of cab usage</li>
+            <li>Up to 80 km included</li>
+            <li>₹13/km after 80 km</li>
+            <li>Driver waiting time included</li>
+            <li>All premium vehicles</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹1,499<small>+ extras</small></div>
+            <div class="pkg-vehicles">All vehicles</div>
+          </div>
+          <a href="booking.html?pkg=8hr80km" class="pkg-btn">Book This Package →</a>
+        </div>
+      </div>
+
+      <div class="pkg-card reveal d2">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80&auto=format&fit=crop" alt="Airport transfer">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-icon">✈️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Airport Transfer</div>
+          <div class="pkg-tagline">Punctual airport pickups and drops. We track your flight for you.</div>
+          <ul class="pkg-features">
+            <li>Flight tracking included</li>
+            <li>Meet & greet at terminal</li>
+            <li>No waiting charges (1 hr)</li>
+            <li>Available 24/7</li>
+            <li>All vehicles available</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹799<small>onwards</small></div>
+            <div class="pkg-vehicles">Sedan / SUV</div>
+          </div>
+          <a href="booking.html?pkg=airport" class="pkg-btn">Book Airport Cab →</a>
+        </div>
+      </div>
+
+      <div class="pkg-card reveal">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=700&q=80&auto=format&fit=crop" alt="Outstation trip">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-icon">🛣️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Outstation</div>
+          <div class="pkg-tagline">Inter-city travel to Bangalore, Chennai, Tirupati, Goa, and more.</div>
+          <ul class="pkg-features">
+            <li>One way or round trip</li>
+            <li>Experienced highway drivers</li>
+            <li>Includes driver allowance</li>
+            <li>Tollgate charges applicable</li>
+            <li>SUV & Premium options</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">₹12<small>/km</small></div>
+            <div class="pkg-vehicles">SUV / Premium</div>
+          </div>
+          <a href="booking.html?pkg=outstation" class="pkg-btn">Plan My Trip →</a>
+        </div>
+      </div>
+
+      <div class="pkg-card reveal d1">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=700&q=80&auto=format&fit=crop" alt="Tour package">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-icon">🏖️</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Tour Package</div>
+          <div class="pkg-tagline">Multi-day sightseeing tours. Goa, Kerala, Ooty, Coorg & more.</div>
+          <ul class="pkg-features">
+            <li>1–7 day packages</li>
+            <li>Custom itinerary planning</li>
+            <li>Hotel coordination support</li>
+            <li>Experienced tour driver</li>
+            <li>Group discounts available</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">Custom<small>price</small></div>
+            <div class="pkg-vehicles">All vehicles</div>
+          </div>
+          <a href="booking.html?pkg=tour" class="pkg-btn">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="pkg-card reveal d2">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80&auto=format&fit=crop" alt="Corporate travel">
+          <div class="pkg-img-overlay"></div>
+          <div class="pkg-icon">🏢</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-name">Corporate Travel</div>
+          <div class="pkg-tagline">Dedicated business travel accounts for IT companies and enterprises.</div>
+          <ul class="pkg-features">
+            <li>Monthly billing available</li>
+            <li>Dedicated fleet allocation</li>
+            <li>Executive vehicle options</li>
+            <li>GST invoice provided</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="pkg-price-row">
+            <div class="pkg-price">Custom<small>pricing</small></div>
+            <div class="pkg-vehicles">Premium fleet</div>
+          </div>
+          <a href="contact.html" class="pkg-btn">Talk to Us →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">Compare Packages</div>
+      <div class="s-title">Find the right fit</div>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare">
+        <thead>
+          <tr><th>Feature</th><th>4 Hr/40 Km</th><th>8 Hr/80 Km</th><th>Airport</th><th>Outstation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>AC Vehicle</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>GPS Tracked</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Flight Tracking</td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td>Driver Allowance</td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Pay After Ride</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>WhatsApp Confirmation</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>24/7 Available</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Starting Price</td><td>₹899</td><td>₹1,499</td><td>₹799</td><td>₹12/km</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="s-head center reveal" style="margin-bottom:3rem">
+      <div class="eyebrow center">Common Questions</div>
+      <div class="s-title">Frequently Asked</div>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item reveal"><div class="faq-q">Do I need to pay in advance? <span class="arr">+</span></div><div class="faq-a">No advance payment is required for any booking. You pay the driver directly after your ride is complete — in cash or via UPI.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Can I cancel a booking? <span class="arr">+</span></div><div class="faq-a">Yes, you can cancel anytime before the driver departs. Call or WhatsApp us and we'll handle it immediately — no cancellation fee.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Are the prices fixed or negotiable? <span class="arr">+</span></div><div class="faq-a">All package prices are fixed and transparent. No hidden charges. Extra km and waiting time rates are communicated upfront at the time of booking.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Do you have drivers available at 3 AM for airport pickups? <span class="arr">+</span></div><div class="faq-a">Absolutely. We operate 24/7, 365 days a year. Our airport transfer drivers are specially trained for early morning and late night pickups.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">What is covered under the outstation package? <span class="arr">+</span></div><div class="faq-a">The per-km rate covers driver charges and fuel. Tollgate fees, state permits, and driver accommodation (for overnight trips) are charged separately as actuals.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">How do I get a booking confirmation? <span class="arr">+</span></div><div class="faq-a">After booking, a WhatsApp message is automatically sent to your phone with all trip details. Our team will also call to confirm within 15 minutes.</div></div>
+    </div>
+  </div>
+</section>
+
+<script src="js/shared.js"></script>
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+});
+</script>
+</body>
+</html>
